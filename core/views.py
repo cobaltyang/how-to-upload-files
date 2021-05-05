@@ -73,7 +73,7 @@ def download_pdf(request):
 
 def abstract(request):
     return None
-
+#try
 def after(request):
     if request.method == "POST":
         after_form = AfterForm()
