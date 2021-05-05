@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}输入信息{% endblock %}
+
+{% block content %}
+<div class="row text-center vertical-middle-sm">
+    <h1>输入信息</h1>
+    <form class="form-horizontal" action="."  enctype="multipart/form-data" method="post" >{% csrf_token %}
+        <div class="form-group">
+
+            <label for="{{ form.title_ch.id_for_label }}" class="col-md-5 control-label">中文标题</label>
+            <div class="col-md-6 text-left">{{ form.title_ch }}</div>
+        </div>
+
+        <div class="form-group">
+
+            <label for="{{ form.title_en.id_for_label }}" class="col-md-5 control-label"> 英文标题</label>
+            <div class="col-md-6 text-left">{{ form.title_en }}</div>
+        </div>
+
+        <div class="form-group">
+
+            <label for="{{ form.xueyuan.id_for_label }}" class="col-md-5 control-label">学院</label>
+            <div class="col-md-6 text-left">{{ form.xueyuan }}</div>
+        </div>
+
+        <div class="form-group">
+
+            <label for="{{ form.zhuanye.id_for_label }}" class="col-md-5 control-label"> 专业</label>
+            <div class="col-md-6 text-left">{{ form.zhuanye }}</div>
+        </div>
+
+        <div class="form-group">
+
+            <label for="{{ form.xuehao.id_for_label }}" class="col-md-5 control-label"> 学号</label>
+            <div class="col-md-6 text-left">{{ form.xuehao }}</div>
+        </div>
+
+        <div class="form-group">
+
+            <label for="{{ form.name.id_for_label }}" class="col-md-5 control-label">名字</label>
+            <div class="col-md-6 text-left">{{ form.name }}</div>
+        </div>
+
+        <div class="form-group">
+
+            <label for="{{ form.laoshi.id_for_label }}" class="col-md-5 control-label">老师</label>
+            <div class="col-md-6 text-left">{{ form.laoshi }}</div>
+        </div>
+
+        <div class="form-group">
+
+            <label for="{{ form.riqi.id_for_label }}" class="col-md-5 control-label">日期</label>
+            <div class="col-md-6 text-left">{{ form.riqi }}</div>
+        </div>
+         <div class="form-group">
+
+            <label for="{{ form.outputname.id_for_label }}" class="col-md-5 control-label">输出文件名</label>
+            <div class="col-md-6 text-left">{{ form.outputname }}</div>
+        </div>
+
+        <input type="submit" class="btn btn-primary btn-lg" value="下一步">
+    </form>
+</div>
+
+
+{% endblock %}

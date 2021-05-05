@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}Home page{% endblock %}
+{% block content %}
+{% for field in abstract_form %}
+
+
+
+            {{ field.errors }}
+            {{ field.label_tag }}: {{ field }}
+
+
+{% endfor %}
+
+
+
+{% endblock %}
