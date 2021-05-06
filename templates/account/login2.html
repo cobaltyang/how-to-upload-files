@@ -18,7 +18,7 @@
     <form class="form-horizontal" action="{% url 'account:user_login' %}?next={{next}}" method="post" >
     {% else %}
     <form class="form-horizontal" action="{% url 'account:user_login' %}" method="post">
-    {% endif %}    
+    {% endif %}
         {% csrf_token %}
 
 
