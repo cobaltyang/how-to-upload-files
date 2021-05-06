@@ -5,7 +5,7 @@ from docx import Document
 from reportlab.pdfgen import canvas
 from PyPDF2 import PdfFileReader, PdfFileWriter, PdfFileMerger
 import os,shutil
-
+from .zhengwen import zhengwen_fix
 
 def zhuanhuan(filename):
     c = canvas.Canvas(filename.replace(".docx", ".pdf"))
@@ -35,4 +35,6 @@ def final(content,outputname):
     doc = DocxTemplate('static/docx/moban.docx')  # 加载模板文件
     doc.render(content) #填充数据
     doc.save('static/pdfresult/'+outputname+'.docx') #保存目标文件
+    zhengwen_fix('static/pdfresult/'+outputname+'.docx')
+
 

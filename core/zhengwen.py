@@ -5,8 +5,8 @@ from docx.enum.text import WD_PARAGRAPH_ALIGNMENT, WD_LINE_SPACING
 from docx.oxml.ns import qn
 
 def zhengwen_fix(docname):
-    docname_correct = 'media/' +  docname
-    doc = Document(docname_correct)
+
+    doc = Document(docname)
     pattern_h1 = r'^(第([0-9]{1})章)'
     pattern_h2= r"^([0-9]{1}).([0-9]{1})"
     pattern_h3 = r"^([0-9]{1}).([0-9]{1}).([0-9]{1})"
@@ -68,24 +68,10 @@ def zhengwen_fix(docname):
                 run.font.name = '黑体'
                 run.element.rPr.rFonts.set(qn('w:eastAsia'), '黑体')  # 设置中文字体
                 run.font.size = Pt(12)  # 小四号
-
-    print(sum_h1)
-    print(sum_h2)
-    print(sum_h3)
-    print(sum_h4)
     #设置页边距
     for sect in doc.sections:
         sect.top_margin = Cm(3.2)
         sect.bottom_margin = Cm(2.8)
         sect.right_margin = sect.left_margin = Cm(2.5)
-        #页眉页脚高度
-        sect.header_distance =Cm(2.2)
-        sect.footer_distance =Cm(2.0)
-        headsec = sect.header
-        headpara =headsec.paragraphs[0]
-        headpara.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-        head_run = headpara.add_run('石家庄铁道大学毕业设计')
-        head_run.font.name = '黑体'
-        head_run.element.rPr.rFonts.set(qn('w:eastAsia'), '微软雅黑')  # 设置中文字体
 
 
