@@ -15,20 +15,20 @@ class AuthorInfo(models.Model):
 
 class AbstractInfo(models.Model):
     keyword_ch = models.CharField(max_length=100,blank=True)
-    abstract_ch = models.TextField(max_length=1000,blank=True)
+    abstract_ch = models.TextField(max_length=2000,blank=True)
 
     keyword_en = models.CharField(max_length=100,blank=True)
-    abstract_en = models.TextField(max_length=1000,blank=True)
+    abstract_en = models.TextField(max_length=2000,blank=True)
 
 
 class ContentInfo(models.Model):
-    content1 = models.TextField(max_length=1000, blank=True)
-    content2 = models.TextField(max_length=1000,blank=True)
-    content3 = models.TextField(max_length=1000, blank=True)
-    content4 = models.TextField(max_length=1000, blank=True)
-    content5 = models.TextField(max_length=1000, blank=True)
-    content6 = models.TextField(max_length=1000, blank=True)
-    content7 = models.TextField(max_length=1000, blank=True)
+    content1 = models.TextField(max_length=2000, blank=True)
+    content2 = models.TextField(max_length=2000,blank=True)
+    content3 = models.TextField(max_length=2000, blank=True)
+    content4 = models.TextField(max_length=2000, blank=True)
+    content5 = models.TextField(max_length=2000, blank=True)
+    content6 = models.TextField(max_length=2000, blank=True)
+    content7 = models.TextField(max_length=2000, blank=True)
 
 
 
