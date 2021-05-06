@@ -18,7 +18,7 @@ from docx2pdf import convert
 def index(request):
     if request.method == "POST":
         author_form = AuthorForm(request.POST)
-        content_form = ContentForm()
+        abstract_form = AbstractForm()
         if author_form.is_valid():
             sum_dict = {}
             dict_result1 = add_dict(dict(request.POST),sum_dict)
@@ -29,7 +29,7 @@ def index(request):
 
             author_form.save()
 
-            return render(request, 'core/abstract.html', {"content_form":content_form, })
+            return render(request, 'core/abstract.html', {"abstract_form":abstract_form, })
         else:
             return render(request,'core/error.html',{'form':author_form})
     else:
