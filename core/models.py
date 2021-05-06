@@ -22,13 +22,13 @@ class AbstractInfo(models.Model):
 
 
 class ContentInfo(models.Model):
-    content1 = models.TextField(max_length=2000, blank=True)
-    content2 = models.TextField(max_length=2000,blank=True)
-    content3 = models.TextField(max_length=2000, blank=True)
-    content4 = models.TextField(max_length=2000, blank=True)
-    content5 = models.TextField(max_length=2000, blank=True)
-    content6 = models.TextField(max_length=2000, blank=True)
-    content7 = models.TextField(max_length=2000, blank=True)
+    content1 = models.TextField(max_length=4000, blank=True)
+    content2 = models.TextField(max_length=4000,blank=True)
+    content3 = models.TextField(max_length=4000, blank=True)
+    content4 = models.TextField(max_length=4000, blank=True)
+    content5 = models.TextField(max_length=4000, blank=True)
+    content6 = models.TextField(max_length=4000, blank=True)
+    content7 = models.TextField(max_length=4000, blank=True)
 
 
 
