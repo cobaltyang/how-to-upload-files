@@ -7,10 +7,10 @@ from docx.oxml.ns import qn
 def zhengwen_fix(docname):
 
     doc = Document(docname)
-    pattern_h1 = r'^(第([0-9]{1})章)'
-    pattern_h2= r"^([0-9]{1}).([0-9]{1})"
-    pattern_h3 = r"^([0-9]{1}).([0-9]{1}).([0-9]{1})"
-    pattern_h4 = r"^([0-9]{1}).([0-9]{1}).([0-9]{1}).([0-9]{1})"
+    pattern_h1 = r'第\s*[0-9]{1}\s*章'
+    pattern_h2= r"[0-9]{1}./[0-9]{1}"
+    pattern_h3 = r"[0-9]{1}./[0-9]{1}./[0-9]{1}"
+    pattern_h4 = r"[0-9]{1}./[0-9]{1}./[0-9]{1}./[0-9]{1}"
     sum_h1 = sum_h2 = sum_h3 = sum_h4 = 0
 
 
