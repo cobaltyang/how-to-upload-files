@@ -53,7 +53,7 @@ def after(request):
         else:
             return  render(request, "core/download.html", )
 
-
+#基本成功
 def download_pdf(request):
     dict_third = cache.get('dict')
     dict_result3 = add_dict(dict(request.POST), dict_third)
