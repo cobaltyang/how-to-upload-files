@@ -24,7 +24,7 @@ def index(request):
             dict_result1 = add_dict(dict(request.POST),sum_dict)
             cache.set('dict',dict_result1)
             cache.set('filename',request.POST['outputname'])
-            cache.set('up_name',request.FILES['wendang'].name)
+
 
             print(dict_result1)
 
@@ -46,6 +46,7 @@ def after(request):
             dict_second =  cache.get('dict')
             dict_result2 =  add_dict(dict(request.POST), dict_second)
             cache.set('dict',dict_result2)
+            cache.set('up_name', request.FILES['wendang'].name)
 
             print(dict_result2)
             return render(request, "core/after.html", {"after_form": after_form})
@@ -61,9 +62,10 @@ def download_pdf(request):
 
     name = cache.get('filename')
     up_name = cache.get('up_name')
+    zhengwen_fix(up_name)
     print(name)
     final(dict_result3,name,up_name)
-    file = open('static/pdfresult/'+name+'2.docx', 'rb')
+    file = open('static/pdfresult/'+name+'.docx', 'rb')
     response = FileResponse(file)
     response['Content-Type'] = 'application/octet-stream'
     response['Content-Disposition'] = 'attachment;filename =result.docx'

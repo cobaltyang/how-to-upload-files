@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'untitled6.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'untitled6',
+        'NAME': 'wenjian',
         'USER': 'root',
         'PASSWORD': '123456',
         'HOST': 'localhost',

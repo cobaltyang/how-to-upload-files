@@ -33,11 +33,11 @@ def chongmingming(srcpath,dstpath):
 # 多输入实现方式
 def final(content,outputname,up_name):
     doc = DocxTemplate('static/docx/moban.docx')  # 加载模板文件
-    sd = doc.new_subdoc('media'+up_name+'.docx')#用户上传的子文档
+    sd = doc.new_subdoc('static/pdfresult/' + up_name)#用户上传的子文档
     content['mysubdoc'] = sd
     doc.render(content) #填充数据
     doc.save('static/pdfresult/'+outputname+'.docx') #保存目标文件
-    # zhengwen_fix(outputname)
+
 
 
 
