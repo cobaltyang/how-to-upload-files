@@ -37,7 +37,7 @@ def index(request):
         author_form = AuthorForm(request.POST)
         return render(request, "core/index.html", {"form": author_form})
 
-
+#最终
 def after(request):
     if request.method == "POST":
         after_form = AfterForm()
