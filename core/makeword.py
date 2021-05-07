@@ -9,6 +9,7 @@ import os,shutil
 import win32com.client as win32
 from .zhengwen import zhengwen_fix
 
+
 def zhuanhuan(filename):
     c = canvas.Canvas(filename.replace(".docx", ".pdf"))
     c.showPage()
@@ -61,6 +62,29 @@ def final(up_name):
 
     output.SaveAs('E://newcode//untitled6//static//pdffinal//final.docx')  # 保存
     output.Close()
+
+
+
+
+
+def doc2pdf(input, output):
+    pythoncom.CoInitialize()
+    w = win32.Dispatch('Word.Application')
+    try:
+        # 打开文件
+        doc = w.Documents.Open(input, ReadOnly=1)
+        # 转换文件
+        doc.ExportAsFixedFormat(output, win32.constants.wdExportFormatPDF,
+                                Item=win32.constants.wdExportDocumentWithMarkup,
+                                CreateBookmarks=win32.constants.wdExportCreateHeadingBookmarks)
+        print("转换成功！！")
+        return True
+    except Exception as e:
+        print(e)
+        return False
+    finally:
+        w.Quit(win32.constants.wdDoNotSaveChanges)
+
 
 
 

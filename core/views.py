@@ -7,7 +7,7 @@ from django.http import HttpResponse, FileResponse
 from django.shortcuts import render
 from .forms import AuthorForm, AfterForm, AbstractForm
 import os
-from .makeword import add_dict, final, buildend, buildcover
+from .makeword import add_dict, final, buildend, buildcover,zhuanhuan,doc2pdf
 
 from reportlab.pdfgen import canvas
 from docx2pdf import convert
@@ -69,11 +69,10 @@ def download_pdf(request):
     name = cache.get('filename')
     up_name = cache.get('up_name')
     zhengwen_fix(up_name)  #
-
     final(up_name)
-
-    file = open('static/pdffinal/final.docx', 'rb')
+    doc2pdf(r'E:\newcode\untitled6\static\pdffinal\final.docx',r'E:\newcode\untitled6\static\pdffinal\final.pdf')
+    file = open('static/pdffinal/final.pdf', 'rb')
     response = FileResponse(file)
     response['Content-Type'] = 'application/octet-stream'
-    response['Content-Disposition'] = 'attachment;filename =result.docx'
+    response['Content-Disposition'] = 'attachment;filename =result.pdf'
     return response
