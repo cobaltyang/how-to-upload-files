@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}输入参考文献及致谢{% endblock %}
+
+{% block content %}
+<div class="row text-center vertical-middle-sm">
+    <h1>请输入输入参考文献及致谢</h1>
+
+    <form class="form-horizontal" action="{% url 'core:download_pdf' %}" method="post" >
+        {% csrf_token %}
+        <div class="form-group">
+
+            <label for="{{ after_form.bibliography.id_for_label }}" class="col-md-5 control-label">参考文献</label>
+
+            <div class="col-md-6 text-left">{{ after_form.bibliography }}</div>
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="{{ after_form.acknowledgment.id_for_label }}" class="col-md-5 control-label"> 致谢</label>
+            <div class="col-md-6 text-left">{{ after_form.acknowledgment }}</div>
+        </div>
+        <input type="submit" class="btn btn-primary btn-lg" value="下载文档">
+ </form>
+<button class="btn btn-primary btn-lg"  onclick="window.location.href='http://127.0.0.1:8000/core/index/'">返回首页继续提交</button>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}register user{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="https://unpkg.com/browse/mobi.css@3.1.1/dist/mobi.min.css">
+<div class="row text-center vertical-middle-sm">
+
+    <h3 class="text-center bg-info p-2 text-white mb-0">注册</h3>
+    <p>If you are a user, <strong><a href="{% url 'account:user_login' %}">Login</a> </strong>,please</p>
+    <p>or register.</p>
+
+
+            <form class="form-horizontal" action="." method="post">{% csrf_token %}
+
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}" class="col-md-5 control-label">
+        Username</label>
+                    <div class="col-md-6 text-left">{{ form.username }}</div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}" class="col-md-5 control-label"> Email</label>
+                    <div class="col-md-6 text-left">{{ form.email }}</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.password.id_for_label }}" class="col-md-5 control-label">
+        Password</label>
+                    <div class="col-md-6 text-left">{{ form.password }}</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.password2.id_for_label }}" class="col-md-5 control-label"> Confirm Password</label>
+                    <div class="col-md-6 text-left">{{ form.password2 }}</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ profile.birth.id_for_label }}" class="col-md-5 control-label"> Birth Date</label>
+                    <div class="col-md-6 text-left">{{ profile.birth }}</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ profile.phone.id_for_label }}" class="col-md-5 control-label">Phone</label>
+                    <div class="col-md-6 text-left">{{ profile.phone }}</div>
+                </div>
+
+                <div class="form-group">
+                        {{ form.captcha.errors }}
+                    <label for="{{ form.captcha.id_for_label }}" class="col-md-5 control-label" style="color:blue"><span class="glyphicon glyphicon-floppy-open"></span>验证码</label>
+                <div class="col-md-6 text-left">{{ form.captcha }}</div>
+                </div>
+
+                <input type="submit" class="btn btn-primary btn-lg" value="REGISTER">
+            </form>
+        </div>
+
+
+
+ <script>
+        $(function () {
+            // Add refresh button after field (this can be done in the template as well)
+            $('img.captcha').after(
+                $('<a class="btn btn-sm text-white btn-info  captcha-refresh">看不清</a>')
+            );
+
+            $('.captcha-refresh').click(function () {
+                var $form = $(this).parents('form');
+                var url = location.protocol + "//" + window.location.hostname + ":"
+                    + location.port + "/captcha/refresh/";
+
+                // Make the AJAX-call
+                $.getJSON(url, {}, function (json) {
+                    $form.find('input[name="captcha_0"]').val(json.key);
+                    $form.find('img.captcha').attr('src', json.image_url);
+                });
+                return false;
+            });
+        });
+ </script>
+{% endblock %}

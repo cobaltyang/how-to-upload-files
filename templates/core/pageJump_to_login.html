@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>登录失败还有<span id="sp">5</span>秒跳转回登录界面...</h1>
+<p>请检查你的登录信息并重试</p>
+<script>
+    onload=function () {
+        setInterval(go,1000)
+    };
+    var x=4;
+    function go() {
+
+        if (x>=0){
+            document.getElementById("sp").innerText=x;
+        }else {
+            location.href="{% url 'account:user_login' %}";
+        }
+        x--;
+    }
+</script>
+
+
+
+</body>
+</html>
