@@ -7,10 +7,6 @@ class AuthorForm(forms.ModelForm):
         model = AuthorInfo
         fields = "__all__"
 
-
-
-
-
 class AfterForm(forms.ModelForm):
     class Meta:
         model = PaperAfter

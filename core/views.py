@@ -24,6 +24,7 @@ def index(request):
             dict_result1 = add_dict(dict(request.POST),sum_dict)
             cache.set('dict',dict_result1)
             cache.set('filename',request.POST['outputname'])
+            cache.set('up_name',request.FILES['wendang'].name)
 
             print(dict_result1)
 
@@ -39,9 +40,9 @@ def index(request):
 def after(request):
     if request.method == "POST":
         after_form = AfterForm()
-        content_form = ContentForm(request.POST)
-        if  content_form.is_valid():
-            content_form.save()
+        abstract_form = AbstractForm(request.POST, request.FILES)
+        if  abstract_form.is_valid():
+            abstract_form.save()
             dict_second =  cache.get('dict')
             dict_result2 =  add_dict(dict(request.POST), dict_second)
             cache.set('dict',dict_result2)
@@ -49,7 +50,7 @@ def after(request):
             print(dict_result2)
             return render(request, "core/after.html", {"after_form": after_form})
         else:
-            return  render(request, "core/download.html", {"abstract_form": content_form})
+            return  render(request, "core/download.html", )
 
 
 def download_pdf(request):
@@ -59,29 +60,11 @@ def download_pdf(request):
     print(dict_result3)
 
     name = cache.get('filename')
-
+    up_name = cache.get('up_name')
     print(name)
-    final(dict_result3,name)
-
-
+    final(dict_result3,name,up_name)
     file = open('static/pdfresult/'+name+'2.docx', 'rb')
     response = FileResponse(file)
     response['Content-Type'] = 'application/octet-stream'
     response['Content-Disposition'] = 'attachment;filename =result.docx'
     return response
-
-
-def abstract(request):
-    if request.method == "POST":
-        abstract_form = AbstractForm(request.POST)
-        content_form = ContentForm()
-        if  abstract_form.is_valid():
-            abstract_form.save()
-            dict_four =  cache.get('dict')
-            dict_result4 =  add_dict(dict(request.POST), dict_four)
-            cache.set('dict',dict_result4)
-
-            print(dict_result4)
-            return render(request, "core/content.html", {"content_form": content_form})
-        else:
-            return  render(request, "core/download.html", {"abstract_form": content_form})
