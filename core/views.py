@@ -64,7 +64,7 @@ def download_pdf(request):
     final(dict_result3,name)
 
 
-    file = open('static/pdfresult/'+name+'.docx', 'rb')
+    file = open('static/pdfresult/'+name+'2.docx', 'rb')
     response = FileResponse(file)
     response['Content-Type'] = 'application/octet-stream'
     response['Content-Disposition'] = 'attachment;filename =result.docx'

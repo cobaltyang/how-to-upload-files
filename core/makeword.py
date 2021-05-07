@@ -30,11 +30,11 @@ def chongmingming(srcpath,dstpath):
     os.rename(srcpath,dstpath)
     print("重命名完毕")
 
-
+# 多输入实现方式
 def final(content,outputname):
     doc = DocxTemplate('static/docx/moban.docx')  # 加载模板文件
     doc.render(content) #填充数据
     doc.save('static/pdfresult/'+outputname+'.docx') #保存目标文件
-    zhengwen_fix('static/pdfresult/'+outputname+'.docx')
+    zhengwen_fix(outputname)
 
 
